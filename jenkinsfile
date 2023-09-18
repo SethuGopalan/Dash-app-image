@@ -53,7 +53,7 @@ pipeline
 			
 		}
 		failure{
-			echo "I run when you are fail"
+			echo "I run when you are fail I am failed"
 			
 		}
  } 
