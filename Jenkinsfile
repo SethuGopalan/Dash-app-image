@@ -41,7 +41,7 @@ pipeline {
                     // sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
                     // dockerImage.push();
                     // dockerImage.push('latest');
-                    sh 'docker push dockerImage'
+                    sh 'docker push dockerimage'
                 }
             }
         }
