@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Define environment variables as needed
-        DOCKER_REGISTRY = ('https://registry.hub.docker.com')
+        DOCKER_REGISTRY = '7797'
         DOCKER_IMAGE_NAME = 'dash-app-image'
         DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
@@ -34,6 +34,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
+                    withCredentials([usernamePassword(credentialsId: 'sethugopalan@outlook.com', usernameVariable: '7797', passwordVariable: 'Lucky4ever')])
                     // Authenticate with your Docker registry (if needed)
                     // You may need to provide credentials to your Docker registry here
 
