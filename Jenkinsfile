@@ -38,9 +38,10 @@ pipeline {
                     // You may need to provide credentials to your Docker registry here
 
                     // Push the Docker image to the registry
-                    //  sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
-                    dockerImage.push();
-                    dockerImage.push('latest');
+                    // sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                    // dockerImage.push();
+                    // dockerImage.push('latest');
+                    sh 'docker push dockerImage'
                 }
             }
         }
