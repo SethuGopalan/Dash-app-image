@@ -44,14 +44,7 @@ pipeline {
     }
     
     post {
-        success {
-            // If the build was successful, print a message
-            echo "Docker image built and pushed successfully!"
-        }
-    
-
-
- 
+        
 
         always{
             echo "I am awesome. I run always"
