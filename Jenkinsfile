@@ -15,12 +15,27 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Test'){
-            steps{
-                sh '!pip install pytest'
+        stage('Install and Run') {
+            steps {
+                // Create a virtual environment
+                sh 'python -m venv venv'
+
+                // Activate the virtual environment
+                sh 'source venv/bin/activate'
+
+                // Install packages using pip in the virtual environment
+                sh 'pip install pytest'
+
+                // Run your Python script or tests
                 sh 'pytest'
             }
         }
+        // stage('Test'){
+        //     steps{
+        //         sh '!pip install pytest'
+        //         sh 'pytest'
+        //     }
+        // }
         
         stage('Build Docker Image') {
             steps {
