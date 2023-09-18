@@ -33,8 +33,9 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
+                withCredentials([usernamePassword(credentialsId: 'sethugopalan@outlook.com', usernameVariable: '7797', passwordVariable: 'Lucky4ever')])
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'sethugopalan@outlook.com', usernameVariable: '7797', passwordVariable: 'Lucky4ever')])
+                    
                     // Authenticate with your Docker registry (if needed)
                     // You may need to provide credentials to your Docker registry here
 
