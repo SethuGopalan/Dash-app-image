@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Define environment variables as needed
-        DOCKER_REGISTRY = '7797'
+        DOCKER_REGISTRY = ('https://registry.hub.docker.com','7797','Lucky4ever')
         DOCKER_IMAGE_NAME = 'dash-app-image'
         DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
