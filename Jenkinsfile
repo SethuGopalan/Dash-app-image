@@ -28,7 +28,7 @@ pipeline
     stage('Build docker image'){
 
         script{
-            dockerImage=docker.build(7797/dash-app-image ${env.BUILD_TAG})
+            dockerImage=docker.build("7797/dash-app-image:${env.BUILD_TAG}")
         }
 
     }
