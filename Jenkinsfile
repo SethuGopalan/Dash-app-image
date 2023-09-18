@@ -31,22 +31,22 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'sethugopalan@outlook.com', usernameVariable: '7797', passwordVariable: 'Lucky4ever')])
-                script {
+        // stage('Push Docker Image') {
+        //     steps {
+        //         // withCredentials([usernamePassword(credentialsId: 'sethugopalan@outlook.com', usernameVariable: '7797', passwordVariable: 'Lucky4ever')])
+        //         script {
                     
-                    // Authenticate with your Docker registry (if needed)
-                    // You may need to provide credentials to your Docker registry here
+        //             // Authenticate with your Docker registry (if needed)
+        //             // You may need to provide credentials to your Docker registry here
 
-                    // Push the Docker image to the registry
-                    sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
-                    // dockerImage.push();
-                    // dockerImage.push('latest');
-                    // sh 'docker push dockerimage'
-                }
-            }
-        }
+        //             // Push the Docker image to the registry
+        //             sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+        //             // dockerImage.push();
+        //             // dockerImage.push('latest');
+        //             // sh 'docker push dockerimage'
+        //         }
+        //     }
+        // }
     }
     
     post {
