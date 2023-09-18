@@ -1,55 +1,57 @@
-pipeline
-{
+pipeline {
     agent any
+    
+    environment {
+        // Define environment variables as needed
+        DOCKER_REGISTRY = '7797'
+        DOCKER_IMAGE_NAME = 'dash-app-image'
+        DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
+    }
 
-    stages{
-
-        stage('checkout'){
-
-            steps{ 
-                sh 'python --version'
-                sh 'docker --version'
-                echo "Build"
-                echo "BUILD_NUMBER -$env.BUILD_NUMBER"
-                echo "BUILD_ID - $env.BUILD_ID"
-                echo "JOB_NAME - $env.JOB_NAME" 
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from your GitHub repository
+                checkout scm
             }
-
         }
         stage('Test'){
-      
-      steps{
-
-        sh "pytest"
-      }
-          
-
-    }
-    stage('Build docker image'){
-
-        steps{
-
-        script{
-
-            dockerImage=docker.build("7797/dash-app-image:${env.BUILD_TAG}")
+            steps{
+                sh 'pytest'
+            }
         }
+        
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image
+                    sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
+                }
+            }
         }
 
-    }
-    stage('push docker Image to '){
-        steps{
-            script{
-                docker.withRegistry('','7797')
-                dockerImage.push();
-                dockerImage.push('latest')
-             
-             }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Authenticate with your Docker registry (if needed)
+                    // You may need to provide credentials to your Docker registry here
+
+                    // Push the Docker image to the registry
+                    sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                }
+            }
         }
     }
     
+    post {
+        success {
+            // If the build was successful, print a message
+            echo "Docker image built and pushed successfully!"
+        }
     
- } 
- post{
+
+
+ 
 
         always{
             echo "I am awesome. I run always"
