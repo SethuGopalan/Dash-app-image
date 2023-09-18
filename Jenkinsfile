@@ -16,11 +16,11 @@ pipeline
             }
 
         }
-    }
-    stage('Test'){
+        stage('Test'){
       
       steps{
-        sh 'pytest'
+
+        sh "pytest"
       }
           
 
@@ -42,19 +42,23 @@ pipeline
              }
         }
     }
-    post{
-
-		always{
-			echo "I am awesome. I run always"
-
-		}
-		success{
-			echo "I run when you are succesfull"
-			
-		}
-		failure{
-			echo "I run when you are fail I am failed"
-			
-		}
+    
+    
  } 
+ post{
+
+        always{
+            echo "I am awesome. I run always"
+
+        }
+        success{
+            echo "I run when you are succesfull"
+            
+        }
+        failure{
+            echo "I run when you are fail I am failed"
+            
+        }
+    }
+ 
 }
