@@ -27,8 +27,12 @@ pipeline
     }
     stage('Build docker image'){
 
+        steps{
+
         script{
+
             dockerImage=docker.build("7797/dash-app-image:${env.BUILD_TAG}")
+        }
         }
 
     }
